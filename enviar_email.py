@@ -17,7 +17,7 @@ def create_email():
     SCOPES = ['https://mail.google.com/']
     
     service = Create_Service(CLIENT_SECRET_FILE, API_NAME, API_VERSION, SCOPES)
-    file_attachment = [r'/teste/curriculo.pdf']
+    file_attachment = [r'./curriculo.pdf']
 
     #mensagem de e-mail
     emailMsg = """Pois é, encontrei sua vaga fazendo webscraping.
@@ -27,12 +27,12 @@ Quer saber um pouco mais sobre como descobri essa vaga?
 É só acessar meu perfil no github: https://github.com/nanotecnologista
 
 Em anexo, também estou enviando o meu currículo. E, muito embora eu não tenha tido tanta experiência na área,
-ainda consigo destacar inovações/melhorias"""
+ainda consigo destacar inovações/melhorias que eu consegui trazer nos ambientes em que trabalhei"""
     
     for destinatario in destinatarios:
         #Mensagem de email
         mimeMessage = MIMEMultipart()
-        mimeMessage['from'] = 'Julia Ingrid <julia.ingridsantos.7@gmail.com' 
+        mimeMessage['from'] = 'Julia Ingrid <julia.ingridsantos.7@gmail.com>' 
         mimeMessage['to'] = destinatario
         mimeMessage['subject'] = 'Vaga Remota - Encontrei essa vaga fazendo webscraping'
         mimeMessage.attach(MIMEText(emailMsg, 'plain'))
@@ -61,3 +61,5 @@ ainda consigo destacar inovações/melhorias"""
             body={'raw': raw_string}).execute()
         
         print(message)
+
+create_email()
