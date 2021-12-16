@@ -76,3 +76,4 @@ def pega_link():
                         writer.writerow([email, titulo, tags])
                     break
     return True
+pega_link()
